@@ -6,12 +6,6 @@
   </head>
   <body>
     <%- include('navbar', {links: links}) %>
-    <ul>
-      <% messages.forEach((message) => { %>
-        <li>
-          <strong><%= message.user %>:</strong> <%= message.text %> <em>(<%= message.added.toLocaleString() %>)</em>
-        </li>
-      <% }); %>
-  </ul>
+    <%- include('form') %>
   </body>
 </html>
