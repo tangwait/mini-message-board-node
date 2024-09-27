@@ -10,3 +10,5 @@ I learned:
     how routers take information/variables to display them in view
     get/set/use/post
     to structurally organize my code for readability and organization
+
+    deployment link: https://mini-message-board-node-production.up.railway.app/
