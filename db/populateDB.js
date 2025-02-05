@@ -1,7 +1,9 @@
 const { Client } = require("pg");
-require("dotenv").config(); 
+require("dotenv").config({ path: "db.env" });
 
 const SQL = `
+DROP TABLE IF EXISTS messages;
+
 CREATE TABLE IF NOT EXISTS messages (
   id SERIAL PRIMARY KEY,
   text TEXT NOT NULL,
@@ -18,11 +20,11 @@ INSERT INTO messages (text, "username") VALUES
 async function main() {
   console.log("Seeding database...");
   const client = new Client({
-    user: "tangwai",
-    host: "localhost",
-    database: "mini_message_board",
-    password: "tangwai-examples",
-    port: 5432,
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
   });
 
 
