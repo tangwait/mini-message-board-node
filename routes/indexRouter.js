@@ -3,13 +3,14 @@ const indexRouter = Router();
 const messageController = require("../controllers/messageController");
 const links = require("../utils/variables");
 
-indexRouter.get("/", (req, res) => {
+indexRouter.get("/", async (req, res) => {
+    const messages = await messageController.getAllMessages();
     res.render('index', {
-        links
+        links, 
+        messages
     });
 });
 
-indexRouter.get("/messages", messageController.getAllMessages);
 
 
 module.exports = indexRouter;

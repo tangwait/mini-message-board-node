@@ -1,24 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <title>Homepage</title>
     <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-    <%- include('navbar', { links: links }) %>
+  </head>
+  <body>
+    <%- include('navbar', {links: links}) %>
 
     <ul>
-        <% if (messages && messages.length > 0) { %>
-            <% messages.forEach((message) => { %>
-                <li>
-                    <strong><%= message.user %>:</strong>
-                    <%= message.text %>
-                    <em>(<%= new Date(message.added).toLocaleString() %>)</em>
-                </li>
-            <% }) %>
-        <% } else { %>
-            <p>No messages found.</p>
-        <% } %>
+      <% messages.forEach(message => { %>
+        <li>
+          <strong><%= message.username %>:</strong> <%= message.text %> <em>(<%= message.created_at %>)</em>
+        </li>
+      <% }); %>
     </ul>
-</body>
+  </body>
 </html>
