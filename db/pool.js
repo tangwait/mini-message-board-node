@@ -9,16 +9,10 @@ require("dotenv").config({ path: "db.env" });
 //     port: process.env.DB_PORT,
 //   });
 
-const pool = new Pool({
+module.exports = new Pool({
     user: 'tangwai',
     host: 'localhost',
     database: 'mini_message_board',
     password: 'tangwai-examples', 
     port: 5432,
 });
-
-pool.connect()
-  .then(() => console.log('Connected to PostgreSQL!'))
-  .catch(err => console.error('Database connection error:', err));
-
-module.exports = pool;

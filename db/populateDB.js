@@ -1,16 +1,15 @@
-#! /usr/bin/env node
 const { Client } = require("pg");
-require("dotenv").config();
+require("dotenv").config(); 
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS messages (
   id SERIAL PRIMARY KEY,
   text TEXT NOT NULL,
-  user VARCHAR(50) NOT NULL,
+  "username" VARCHAR(50) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO messages (text, user) VALUES
+INSERT INTO messages (text, "username") VALUES
   ('Welcome to the message board!', 'Sara'),
   ('Are these messages real?', 'Tom'),
   ('No, this is all scripted...', 'Cam');
@@ -18,7 +17,15 @@ INSERT INTO messages (text, user) VALUES
 
 async function main() {
   console.log("Seeding database...");
-  const client = new Client({ connectionString: process.env.DATABASE_URL });
+  const client = new Client({
+    user: "tangwai",
+    host: "localhost",
+    database: "mini_message_board",
+    password: "tangwai-examples",
+    port: 5432,
+  });
+
+
   await client.connect();
   await client.query(SQL);
   await client.end();

@@ -5,7 +5,7 @@ const links = require("../utils/variables");
 
 indexRouter.get("/", (req, res) => {
     res.render('index', {
-        links: links
+        links
     });
 });
 
